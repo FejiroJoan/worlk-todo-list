@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/659089f919.js" crossorigin="anonymous"></script>
+    <style>
+         @font-face {
+           font-family: averta;
+           src: url("./Averta-Regular.otf");
+           font-weight: 1200;
+        }
+        * {
+           font-family:'averta';
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>WORK TO-DOS</h1>
+        <h3>Enter text into the input field to add items to list.</h3>
+        <p>Click the item to mark it as complete.</p>
+        <p class="txt">Click the "X" to remove the items from your list.</p>
+
+        <form id="input">
+            <input type="text" placeholder="New Items..." id="input-box" >
+
+            <button onclick="deleteTask()" type="button">
+                <i class="fa-solid fa-rectangle-xmark" style="color: #469fbc;" ></i>
+            </button>
+          
+            <button onclick="createTask()" type="button">
+                <i class="fa-solid fa-pen fa-sm" style="color: #469fbc;"></i>
+            </button>
+            <ul id="todo-list"></ul>
+            <button onclick="deleteSingleItem()" type="button">
+                <i class="fa-solid fa-trash" style="color: #469fbc;" ></i>
+            </button>
+           
+        </form>
+        
+    </div>
+
+   <script>
+
+        const inputBox = document.getElementById('input-box');
+        const todoList = document.getElementById('todo-list');
+
+
+        function createTask(){
+            if(inputBox.value === ''){
+                alert('Please enter a task!'); 
+            }
+            else{
+                let li = document.createElement('li');
+                // li.textContent = inputBox.value;
+                // todoList.appendChild(li);
+                // inputBox.value = '';
+                li.innerHTML = inputBox.value;
+                todoList.appendChild(li); 
+
+                // let span = document.createElement('todoList');
+                // todoList.innerHTML = '\u00d7';
+                // li.appendChild(span);
+            } 
+            inputBox.value = '';
+        }
+
+        // listContainer.addEventListener('click', function(e){
+        //     if(e.target.tagName === 'li'){
+        //         e.target,classList.toggle('checked');
+        //     }
+        //     else if (e.target.tagName === 'span'){
+        //         e.target.parentElement.remove();
+        //     }
+        // }, false);
+
+
+        
+
+
+
+
+
+
+
+            // const inputBox = document.getElementById("input-box");
+            // const box = inputBox.value;
+            // const li = document.createElement('li');
+            // li.appendChild(document.createTextNode(box));
+            // todoList.appendChild(li);
+            // inputBox.value = "";
+            // const button = document.createElement('button');
+            // button.appendChild(document.createTextNode('X'));
+            // li.appendChild(button);
+            // button.addEventListener('click', deleteTask);
+         
+
+        // function createTask() {
+        //     const inputBox = document.getElementById("input-box");
+        //     const box = inputBox.value;
+
+        //     alert('Created A task')
+        // }
+
+ 
+   </script>
+</body>
+</html>

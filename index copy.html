@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Todo List</title>
+        <script src="https://kit.fontawesome.com/659089f919.js" crossorigin="anonymous"></script>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: rgb(43, 159, 183);
+                width: 100%;
+                height: 100%;
+            }
+
+            .container {
+                max-width: 800px;
+                margin: 20px auto;
+                padding: 20px;
+                border: none;
+                /* border-radius: 4px; */
+                /* box-shadow: 0 0 10px rgba(0,0,0,0.1); */
+            }
+
+            .sub{
+                text-align: center;
+            }
+
+            h1 {
+                
+                color: white;
+                font-size: 50px;
+                font-weight: bold;
+            }
+
+           
+            h3{
+                color: gold;
+            }
+
+            p{
+                color: rgb(24, 244, 101);
+                font-weight: bold;
+            }
+
+            .txt{
+                color: rgb(10, 71, 114);
+            }
+
+            form {
+                display: flex;
+                margin-bottom: 20px;
+            }
+
+            input[type="text"] {
+                flex: 1;
+                padding: 10px;
+                font-size: 16px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                outline: none;
+            }
+
+            button {
+                padding: 10px 20px;
+                font-size: 16px;
+                background-color:  rgb(10, 71, 114) ;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            li {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+
+            button.delete {
+                margin-left: auto;
+                background-color: aliceblue;
+            }
+
+            button.delete-all {
+                /* background-color: #f44336; */
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="sub">
+                <h1>WORK TO-DOS</h1>
+                <h3>Enter text into the input field to add items to list.</h3>
+                <p>Click the item to mark it as complete.</p>
+                <p class="txt">Click the box to remove the items from your list.</p>
+            </div>
+
+            <form id="todo-form">
+            <input type="text" id="todo-input" placeholder="New items..." required>
+            <button type="submit">
+                <i class="fa-solid fa-pen fa-sm" style="color: #469fbc;"></i>
+            </button>
+            </form>
+            <ul id="todo-list"></ul>
+            <button id="delete-all-button" class="delete-all">
+                <i class="fa-solid fa-trash" style="color: #469fbc;" ></i>
+            </button>
+        </div>
+
+        <script>
+            document.getElementById("todo-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            var input = document.getElementById("todo-input");
+            var todoItem = input.value.trim();
+
+            if (todoItem !== "") {
+                var li = document.createElement("li");
+                li.textContent = todoItem;
+
+            var deleteButton = document.createElement("button");
+            deleteButton.textContent = " "; 
+            deleteButton.classList.add("delete");
+
+            // Create an icon element
+            var icon = document.createElement('i');
+            icon.className = 'fa-solid fa-rectangle-xmark" color: #469fbc'; 
+
+            // Insert the icon into the button
+            deleteButton.prepend(icon); 
+
+            deleteButton.addEventListener("click", function() {
+                li.remove();
+            });
+
+                li.appendChild(deleteButton);
+
+                document.getElementById("todo-list").appendChild(li);
+
+                input.value = "";
+            }
+            });
+
+            document.getElementById("delete-all-button").addEventListener("click", function() {
+            var todoList = document.getElementById("todo-list");
+            while (todoList.firstChild) {
+                todoList.firstChild.remove();
+            }
+            });
+        </script>
+    </body>
+    </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
